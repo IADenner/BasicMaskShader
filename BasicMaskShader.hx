@@ -1,7 +1,7 @@
 package shaders;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxShader;
-import gameTools.things.MySprite;
+import flixel.system.FlxGraphicAsset;
 
 /**
  * ...
@@ -42,24 +42,14 @@ class BasicMaskShader extends FlxShader
 		 * */
 	}
 	')
-
-	public function new(maskSprite:String) 
+	public function new(maskSprite:FlxGraphicAsset) 
 	{
 		super();
-		
-		
-		
-		
 		setData(maskSprite);
-		
-		
 	}
 	
-	
-	
-	public function setData(maskSprite:String, tsizeX:Float = 1, tsizeY:Float = 1, trelativePosX:Float = 0, trelativePosY:Float = 0)
+	public function setData(maskSprite:FlxGraphicAsset, tsizeX:Float = 1, tsizeY:Float = 1, trelativePosX:Float = 0, trelativePosY:Float = 0)
 	{
-		
 		var mp:FlxSprite = new FlxSprite(0, 0);
 		
 		//for some reason I couldn't get BitmapData.loadFile() to work
@@ -68,19 +58,15 @@ class BasicMaskShader extends FlxShader
 		
 		mp.destroy();
 		setPosAndSize(tsizeX, tsizeY, trelativePosX, trelativePosY);
-		
-		
-		
 	}
-	
 	
 	public function setPosAndSize(tsizeX:Float = 1, tsizeY:Float = 1, trelativePosX:Float = 0, trelativePosY:Float = 0)
 	{
-		relativePosX.value = [trelativePosX];
-		relativePosY.value = [trelativePosY];
+		data.relativePosX.value = [trelativePosX];
+		data.relativePosY.value = [trelativePosY];
 		
-		sizeX.value = [1/tsizeX];
-		sizeY.value = [1/tsizeY];
+		data.sizeX.value = [1/tsizeX];
+		data.sizeY.value = [1/tsizeY];
 	}
 
 	
